@@ -1,4 +1,45 @@
 ;;;;
+;; Custom Stuff (Rest is from CLJ book)
+;;;;
+
+;; This is the Aquamacs Preferences file.
+;; Add Emacs-Lisp code here that should be executed whenever
+;; you start Aquamacs Emacs. If errors occur, Aquamacs will stop
+;; evaluating this file and print errors in the *Messags* buffer.
+;; Use this file in place of ~/.emacs (which is loaded as well.)
+
+(setq default-directory (expand-file-name "~"))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(ns-alternate-modifier (quote none))
+ '(ns-command-modifier (quote meta))
+ '(ns-control-modifier (quote control))
+ '(ns-function-modifier (quote none))
+ '(ns-pop-up-frames nil)
+ '(ns-right-alternate-modifier (quote left))
+ '(ns-right-command-modifier (quote left))
+ '(ns-right-control-modifier (quote left))
+ '(org-enforce-todo-checkbox-dependencies t)
+ '(org-enforce-todo-dependencies t)
+ '(org-support-shift-select nil)
+ '(show-paren-mode t)
+ '(size-indication-mode t)
+ '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
+ '(tool-bar-mode nil)
+ '(windmove-wrap-around t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;;;;
 ;; Packages
 ;;;;
 
@@ -10,6 +51,8 @@
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/") t)
 
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -130,3 +173,12 @@
 ;; Language-specific
 (load "setup-clojure.el")
 (load "setup-js.el")
+
+(setq mac-command-key-is-meta t)
+(column-number-mode)
+(windmove-default-keybindings)
+(setq magit-last-seen-setup-instructions "1.4.0")
+
+(global-set-key "\C-cy" '(lambda ()
+                           (interactive)
+                           (popup-menu 'yank-menu)))
